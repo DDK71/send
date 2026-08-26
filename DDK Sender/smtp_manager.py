@@ -1,5 +1,6 @@
 """
-Gerenciador SMTP com Logs Transparentes e Detecção de Ratelimit
+Gerenciador SMTP com Logs Transparentes, Detecção de Ratelimit e Connection Pooling
+v4.0: Reactivation com cooldown, Ratelimit inteligente, Diferenciação Proxy vs SMTP
 """
 
 import smtplib
@@ -9,6 +10,7 @@ import time
 import os
 import threading
 import socks
+import re
 from datetime import datetime
 
 from config import (
@@ -16,6 +18,7 @@ from config import (
     SMTP_TIMEOUT,
     SMTP_RETRY_ATTEMPTS,
     SMTP_RETRY_DELAY,
+    SMTP_RETRY_BACKOFF,
     USE_TLS,
     USE_SSL,
     USE_PROXY,
@@ -26,58 +29,24 @@ from config import (
     SAVE_REMOVED_SMTPS,
     REMOVED_SMTP_FILE,
     AUTO_CLEAN_INPUT_FILE,
+    REACTIVATION_COOLDOWN,
+    RATELIMIT_BACKOFF,
+    ENABLE_CONNECTION_POOLING,
 )
 from utils import load_file_lines, logger, Display
+from connection_pool import ProxiedSMTP, ProxiedSMTP_SSL, ConnectionPool
 
 
-class ProxiedSMTP(smtplib.SMTP):
-    def __init__(self, host, port=587, timeout=SMTP_TIMEOUT, proxy=None):
-        self._proxy = proxy
-        self._timeout = timeout
-        super().__init__(host=host, port=port, timeout=timeout)
-
-    def _get_socket(self, host, port, timeout):
-        if self._proxy:
-            proxy_types = {"socks4": socks.SOCKS4, "socks5": socks.SOCKS5, "http": socks.HTTP}
-            sock = socks.socksocket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.set_proxy(
-                proxy_type=proxy_types.get(PROXY_TYPE, socks.SOCKS5),
-                addr=self._proxy["host"],
-                port=int(self._proxy["port"]),
-                username=self._proxy.get("username"),
-                password=self._proxy.get("password"),
-            )
-            sock.settimeout(self._timeout)
-            sock.connect((host, port))
-            return sock
-        return socket.create_connection((host, port), timeout)
+class ProxyError(Exception):
+    """Erro específico de proxy (não de SMTP)"""
+    pass
 
 
-class ProxiedSMTP_SSL(smtplib.SMTP_SSL):
-    def __init__(self, host, port=465, timeout=SMTP_TIMEOUT, context=None, proxy=None):
-        self._proxy = proxy
-        self._timeout = timeout
-        if context is None:
-            context = ssl.create_default_context()
-            context.check_hostname = False
-            context.verify_mode = ssl.CERT_NONE
-        super().__init__(host=host, port=port, timeout=timeout, context=context)
-
-    def _get_socket(self, host, port, timeout):
-        if self._proxy:
-            proxy_types = {"socks4": socks.SOCKS4, "socks5": socks.SOCKS5, "http": socks.HTTP}
-            sock = socks.socksocket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.set_proxy(
-                proxy_type=proxy_types.get(PROXY_TYPE, socks.SOCKS5),
-                addr=self._proxy["host"],
-                port=int(self._proxy["port"]),
-                username=self._proxy.get("username"),
-                password=self._proxy.get("password"),
-            )
-            sock.settimeout(self._timeout)
-            sock.connect((host, port))
-            return self.context.wrap_socket(sock, server_hostname=host, do_handshake_on_connect=True)
-        return super()._get_socket(host, port, timeout)
+class RatelimitError(Exception):
+    """Erro de ratelimit (com código)"""
+    def __init__(self, message, error_code="default"):
+        super().__init__(message)
+        self.error_code = error_code
 
 
 class SMTPAccount:
@@ -95,8 +64,10 @@ class SMTPAccount:
         self.removed = False
         self.last_used = 0
         self.last_error = None
+        self.last_reactivated = 0  # NOVO: timestamp de última reciclagem
         self.lock = threading.Lock()
         self.ratelimited_until = 0
+        self.ratelimit_error_code = "default"
 
     def __str__(self):
         return f"{self.login}@{self.host}:{self.port}"
@@ -118,11 +89,16 @@ class SMTPAccount:
                 self.is_active = False
                 logger.info(f"SMTP {self} pausado (limite de {MAX_EMAILS_PER_SMTP} envios)")
 
-    def mark_ratelimited(self, duration=300):
+    def mark_ratelimited(self, error_code="default", duration=None):
+        """Marca como ratelimitado com backoff inteligente"""
         with self.lock:
+            if duration is None:
+                duration = RATELIMIT_BACKOFF.get(error_code, RATELIMIT_BACKOFF["default"])
+            
             self.ratelimited_until = time.time() + duration
+            self.ratelimit_error_code = error_code
             self.is_active = False
-            logger.warning(f"RATELIMIT: {self} pausado por {duration}s")
+            logger.warning(f"RATELIMIT [{error_code}]: {self} pausado por {duration}s")
 
     def is_ratelimited(self):
         return time.time() < self.ratelimited_until
@@ -137,10 +113,17 @@ class SMTPAccount:
                 if self.manager:
                     self.manager.handle_account_removal(self, reason)
 
-    def increment_failed(self, error_msg=None):
+    def increment_failed(self, error_msg=None, is_proxy_error=False):
+        """Incrementa falhas, diferenciando erros de proxy"""
         with self.lock:
             if self.removed:
                 return
+            
+            if is_proxy_error:
+                # Não conta contra SMTP se for erro de proxy
+                logger.debug(f"PROXY ERROR (não conta contra SMTP): {self} | {error_msg}")
+                return
+            
             self.failed_count += 1
             self.consecutive_failures += 1
             self.last_error = error_msg
@@ -148,12 +131,22 @@ class SMTPAccount:
                 self.mark_removed(f"{self.consecutive_failures}x falhas: {error_msg}")
 
     def reactivate(self):
+        """Recicla SMTP com cooldown"""
         with self.lock:
+            now = time.time()
+            # NOVO: Respeita cooldown mínimo
+            if now - self.last_reactivated < REACTIVATION_COOLDOWN:
+                return False
+            
             if not self.removed:
                 self.sent_count = 0
                 self.is_active = True
                 self.consecutive_failures = 0
                 self.ratelimited_until = 0
+                self.last_reactivated = now
+                logger.info(f"SMTP reciclado: {self}")
+                return True
+            return False
 
 
 class SMTPManager:
@@ -164,6 +157,8 @@ class SMTPManager:
         self.file_lock = threading.Lock()
         self.current_index = 0
         self.removed_accounts = []
+        self.connection_pool = ConnectionPool()  # NOVO: Pool de conexões
+        self.last_removal_time = 0  # NOVO: Controla spike de removals
 
     def load_accounts(self, filepath=None):
         filepath = filepath or SMTP_FILE
@@ -178,6 +173,15 @@ class SMTPManager:
         return len(self.accounts)
 
     def handle_account_removal(self, account, reason):
+        """Trata remoção de conta com intervalo mínimo"""
+        now = time.time()
+        
+        # NOVO: Evita spike de removals
+        if now - self.last_removal_time < 30:
+            logger.debug(f"Removal bloqueado (cooldown): {account}")
+            return
+        
+        self.last_removal_time = now
         Display.warning(f"SMTP Removido: {account} | {reason}")
         self.removed_accounts.append(account)
         
@@ -222,6 +226,7 @@ class SMTPManager:
             return account
 
     def _reactivate_eligible(self):
+        """Recicla contas elegíveis (respeitando cooldown)"""
         for account in self.accounts:
             if not account.removed and not account.is_ratelimited():
                 account.reactivate()
@@ -231,6 +236,7 @@ class SMTPManager:
             self._reactivate_eligible()
 
     def create_connection(self, account, proxy=None):
+        """Cria conexão SMTP com diferenciação de erros"""
         connection = None
         use_ssl_direct = account.port == 465
 
@@ -269,54 +275,99 @@ class SMTPManager:
         except smtplib.SMTPAuthenticationError as e:
             account.mark_removed(f"Auth: {e}")
             return None, f"AUTH_FAIL: {e}"
+        except (socket.timeout, TimeoutError, OSError) as e:
+            if "Proxy" in str(e) or "SOCKS" in str(e):
+                raise ProxyError(f"Proxy timeout: {e}")
+            err_msg = f"{type(e).__name__}: {str(e)[:80]}"
+            account.increment_failed(err_msg)
+            return None, err_msg
         except Exception as e:
+            if "Proxy" in str(e) or "SOCKS" in str(e):
+                raise ProxyError(f"Proxy error: {e}")
             err_msg = f"{type(e).__name__}: {str(e)[:80]}"
             account.increment_failed(err_msg)
             return None, err_msg
 
     def send_email(self, account, from_email, to_email, raw_message, proxy=None):
-        connection, err_detail = self.create_connection(account, proxy)
-        if connection is None:
-            return False, err_detail
-
-        try:
-            result = connection.sendmail(from_email, [to_email], raw_message)
-            
-            if result:
-                refused = list(result.keys())
-                logger.warning(f"Recusados: {refused}")
-                return False, f"RECUSADOS: {refused}"
-            
-            account.increment_sent()
-            logger.info(f"ENVIADO: {to_email} via {account}")
-            return True, "OK"
-
-        except smtplib.SMTPRecipientsRefused as e:
-            return False, f"RECIPIENT_REFUSED: {e}"
-        except smtplib.SMTPSenderRefused as e:
-            account.mark_removed(f"Sender: {e}")
-            return False, f"SENDER_REFUSED: {e}"
-        except smtplib.SMTPDataError as e:
-            err_str = str(e)
-            if "4.7.1" in err_str or "ratelimit" in err_str.lower() or "exceeded" in err_str.lower():
-                account.mark_ratelimited(300)
-                return False, f"RATELIMIT: {err_str[:60]}"
-            account.increment_failed(err_str)
-            return False, f"DATA_ERROR: {err_str[:60]}"
-        except smtplib.SMTPServerDisconnected as e:
-            return False, f"DISCONNECTED: {e}"
-        except Exception as e:
-            err_msg = f"{type(e).__name__}: {str(e)[:80]}"
-            account.increment_failed(err_msg)
-            return False, err_msg
-        finally:
+        """Envia email com retry automático e pooling"""
+        
+        for attempt in range(1, SMTP_RETRY_ATTEMPTS + 1):
             try:
-                connection.quit()
-            except:
+                connection, err_detail = self.create_connection(account, proxy)
+                if connection is None:
+                    return False, err_detail
+
                 try:
-                    connection.close()
-                except:
-                    pass
+                    result = connection.sendmail(from_email, [to_email], raw_message)
+                    
+                    if result:
+                        refused = list(result.keys())
+                        logger.warning(f"Recusados: {refused}")
+                        return False, f"RECUSADOS: {refused}"
+                    
+                    account.increment_sent()
+                    logger.info(f"ENVIADO: {to_email} via {account}")
+                    return True, "OK"
+
+                except smtplib.SMTPRecipientsRefused as e:
+                    return False, f"RECIPIENT_REFUSED: {e}"
+                except smtplib.SMTPSenderRefused as e:
+                    account.mark_removed(f"Sender: {e}")
+                    return False, f"SENDER_REFUSED: {e}"
+                except smtplib.SMTPDataError as e:
+                    err_str = str(e)
+                    # NOVO: Detecta código de erro específico
+                    error_code = self._extract_error_code(err_str)
+                    if error_code in RATELIMIT_BACKOFF or "ratelimit" in err_str.lower() or "exceeded" in err_str.lower():
+                        account.mark_ratelimited(error_code)
+                        return False, f"RATELIMIT [{error_code}]: {err_str[:60]}"
+                    account.increment_failed(err_str)
+                    return False, f"DATA_ERROR: {err_str[:60]}"
+                except smtplib.SMTPServerDisconnected as e:
+                    return False, f"DISCONNECTED: {e}"
+                except Exception as e:
+                    err_msg = f"{type(e).__name__}: {str(e)[:80]}"
+                    account.increment_failed(err_msg)
+                    return False, err_msg
+                finally:
+                    try:
+                        connection.quit()
+                    except:
+                        try:
+                            connection.close()
+                        except:
+                            pass
+
+            except ProxyError as e:
+                logger.warning(f"PROXY ERROR (attempt {attempt}): {e}")
+                # Marca proxy como ruim, não SMTP
+                if self.proxy_manager:
+                    self.proxy_manager.mark_failed(proxy)
+                
+                # Retry com proxy diferente
+                if attempt < SMTP_RETRY_ATTEMPTS:
+                    wait = SMTP_RETRY_DELAY * (2 ** attempt) if SMTP_RETRY_BACKOFF else SMTP_RETRY_DELAY
+                    time.sleep(wait)
+                    # Pega nova proxy
+                    if self.proxy_manager and self.proxy_manager.has_proxies():
+                        proxy = self.proxy_manager.get_proxy()
+                else:
+                    return False, f"PROXY_FAIL: {e}"
+            except Exception as e:
+                logger.error(f"Erro inesperado no send_email: {e}")
+                return False, str(e)
+        
+        return False, "Max retries exceeded"
+
+    @staticmethod
+    def _extract_error_code(error_str):
+        """Extrai código de erro SMTP (ex: 4.7.1) da mensagem"""
+        match = re.search(r"\b(\d{1}\.\d{1}\.\d{1})\b", error_str)
+        if match:
+            return match.group(1)
+        if "429" in error_str:
+            return "429"
+        return "default"
 
     def get_active_count(self):
         return len([a for a in self.accounts if a.is_active and not a.removed and not a.is_ratelimited()])
@@ -339,4 +390,9 @@ class SMTPManager:
             "removed_accounts": len(self.removed_accounts),
             "total_sent": sum(a.sent_count for a in self.accounts),
             "total_failed": sum(a.failed_count for a in self.accounts),
+            "pool_stats": self.connection_pool.get_stats(),
         }
+
+    def close_pools(self):
+        """Fecha todos os pools de conexão"""
+        self.connection_pool.close_all()

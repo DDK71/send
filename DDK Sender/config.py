@@ -1,5 +1,5 @@
 """
-Configurações Globais - DDK v4.0 Anti-Spam com Inteligência de Reputation
+Configurations Globais - DDK v4.0 Anti-Spam com Inteligência de Reputation
 Todas as recomendações de otimização aplicadas
 """
 
