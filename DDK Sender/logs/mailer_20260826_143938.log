@@ -1,0 +1,28 @@
+[2026-08-26 14:39:40,851] INFO - Template carregado: templates/default.html
+[2026-08-26 14:39:41,093] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #1)
+[2026-08-26 14:39:41,129] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #2)
+[2026-08-26 14:39:41,147] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #3)
+[2026-08-26 14:39:50,893] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:39:54,658] INFO - ENVIADO: comsstrubem@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:39:55,290] INFO - ENVIADO: comsstrubem@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:rst.geekproxy.net:1080
+[2026-08-26 14:39:55,460] WARNING - SMTP REMOVIDO: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465 | Auth: (535, b'5.7.8 Error: authentication failed: UGFzc3dvcmQ6')
+[2026-08-26 14:39:55,469] INFO - SMTP removido do arquivo: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:39:55,469] WARNING - Tentativa 1 falhou: AUTH_FAIL: (535, b'5.7.8 Error: authentication failed: UGFzc3dvcmQ6')
+[2026-08-26 14:39:55,469] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #4)
+[2026-08-26 14:40:00,158] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:40:01,993] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:40:02,231] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:40:02,522] WARNING - Tentativa 2 falhou: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:40:02,522] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #5)
+[2026-08-26 14:40:04,916] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:40:05,286] WARNING - Tentativa 1 falhou: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:40:05,286] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #6)
+[2026-08-26 14:40:06,849] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:40:10,047] INFO - SMTP inicial4@mediari.com.br@autodiscover.mediari.com.br:465 pausado (limite de 2 envios)
+[2026-08-26 14:40:10,047] INFO - ENVIADO: alves.anabeatriz2026@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:40:10,585] INFO - ENVIADO: alves.anabeatriz2026@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:rst.geekproxy.net:1080
+[2026-08-26 14:40:21,624] WARNING - Tentativa 2 falhou: TimeoutError: _ssl.c:1064: The handshake operation timed out
+[2026-08-26 14:40:21,624] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #7)
+[2026-08-26 14:40:26,583] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:40:30,698] INFO - ENVIADO: valmir.santos67101@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:40:31,474] INFO - ENVIADO: valmir.santos67101@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:rst.geekproxy.net:1080

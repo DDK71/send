@@ -1,0 +1,7 @@
+mail.gmx.net|465|bernhard.bunde@gmx.net|Z3ADNLJFEWJZHJMDNIB7 # Removido em 26/08/2026 07:03:06 - Motivo: Credenciais inválidas: (535, b'Authentication credentials invalid')
+mail.gmx.net|465|rb112@gmx.net|V2WCL2I6O6NG4SNI3M4O # Removido em 26/08/2026 07:03:08 - Motivo: Credenciais inválidas: (535, b'Authentication credentials invalid')
+mail.gmx.net|465|technohousdjandre@gmx.net|DEJ4VDADPQ35MHRGW4DA # Removido em 26/08/2026 07:07:27 - Motivo: Credenciais inválidas: (535, b'Authentication credentials invalid')
+szpitalpomnik.pl|465|piotr.zylinski@szpitalpomnik.pl|Kardiologia27! # Auth: (535, b'5.7.8 Error: authentication failed: UGFzc3dvcmQ6') - 26/08/2026 14:12:54
+smtp.oeccabenin.bj|465|visio@oeccabenin.bj|t9PhdGH5t3Lz88 # Sender: (550, b'5.1.0 Too Many IPs used', 'visio@oeccabenin.bj') - 26/08/2026 14:14:51
+smtp.iconecom.net|465|marco.seri@iconecom.net|mm@nu3lla@34R # Sender: (550, b'5.1.0 Too Many IPs used', 'marco.seri@iconecom.net') - 26/08/2026 14:21:48
+smtp.dzielo.pl|465|martyna.jakubiak@dzielo.pl|Kinga-000 # Auth: (535, b'5.7.8 Error: authentication failed: UGFzc3dvcmQ6') - 26/08/2026 14:39:55

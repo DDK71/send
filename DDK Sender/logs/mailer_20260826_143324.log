@@ -1,0 +1,21 @@
+[2026-08-26 14:33:28,328] INFO - Template carregado: templates/default.html
+[2026-08-26 14:33:28,997] DEBUG - Proxy: 37.18.73.60:5566 (uso #1)
+[2026-08-26 14:33:29,007] DEBUG - Proxy: 193.233.126.24:10800 (uso #1)
+[2026-08-26 14:33:29,017] DEBUG - Proxy: 37.18.73.60:5566 (uso #2)
+[2026-08-26 14:33:32,831] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:33:33,873] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:33:38,409] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:33:39,050] WARNING - Tentativa 1 falhou: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:33:39,050] DEBUG - Proxy: 193.233.126.24:10800 (uso #2)
+[2026-08-26 14:33:40,206] INFO - ENVIADO: comsstrubem@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:33:40,604] INFO - ENVIADO: comsstrubem@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:193.233.126.24:10800
+[2026-08-26 14:33:44,499] WARNING - Tentativa 1 falhou: GeneralProxyError: Socket error: timed out
+[2026-08-26 14:33:44,499] DEBUG - Proxy: 37.18.73.60:5566 (uso #3)
+[2026-08-26 14:33:47,537] WARNING - Tentativa 2 falhou: GeneralProxyError: Socket error: 0x04: Host unreachable
+[2026-08-26 14:33:47,538] DEBUG - Proxy: 193.233.126.24:10800 (uso #3)
+[2026-08-26 14:33:49,459] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:33:56,009] WARNING - Tentativa 3 falhou: GeneralProxyError: Socket error: 0x04: Host unreachable
+[2026-08-26 14:33:56,023] ERROR - FALHA: valmir.santos67101@gmail.com | Erro: GeneralProxyError: Socket error: 0x04: Host unreachable
+[2026-08-26 14:33:58,059] INFO - SMTP inicial4@mediari.com.br@autodiscover.mediari.com.br:465 pausado (limite de 2 envios)
+[2026-08-26 14:33:58,059] INFO - ENVIADO: alves.anabeatriz2026@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:33:58,702] INFO - ENVIADO: alves.anabeatriz2026@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:37.18.73.60:5566

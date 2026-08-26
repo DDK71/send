@@ -1,0 +1,6 @@
+﻿Comunicado #{random}
+Aviso #{random}
+Notificacao #{random}
+Informacao #{random}
+Atualizacao #{random}
+Documento #{random}

@@ -1,0 +1,12 @@
+[2026-08-26 14:43:36,213] INFO - Template carregado: templates/default.html
+[2026-08-26 14:43:36,857] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #1)
+[2026-08-26 14:43:36,859] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #2)
+[2026-08-26 14:43:36,868] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #3)
+[2026-08-26 14:43:42,568] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:43:43,544] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:43:44,959] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:43:45,294] WARNING - Tentativa 1 falhou: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:43:45,294] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #4)
+[2026-08-26 14:43:47,598] INFO - SMTP inicial4@mediari.com.br@autodiscover.mediari.com.br:465 pausado (limite de 1 envios)
+[2026-08-26 14:43:47,599] INFO - ENVIADO: comsstrubem@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:43:48,337] INFO - ENVIADO: comsstrubem@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:rst.geekproxy.net:1080

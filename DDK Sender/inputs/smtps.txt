@@ -1,0 +1,3 @@
+autodiscover.mediari.com.br|465|inicial1@mediari.com.br|In1@M1*24
+autodiscover.mediari.com.br|465|inicial4@mediari.com.br|In4@M4*14
+smtp.tavantolgoi.mn|465|blasting@tavantolgoi.mn|tt2024@@

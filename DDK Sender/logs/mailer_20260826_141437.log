@@ -1,0 +1,28 @@
+[2026-08-26 14:14:40,366] INFO - Template carregado: templates/default.html
+[2026-08-26 14:14:50,945] DEBUG - Conexao OK: visio@oeccabenin.bj@smtp.oeccabenin.bj:465
+[2026-08-26 14:14:50,954] DEBUG - Conexao OK: marco.seri@iconecom.net@smtp.iconecom.net:465
+[2026-08-26 14:14:51,197] WARNING - SMTP REMOVIDO: visio@oeccabenin.bj@smtp.oeccabenin.bj:465 | Sender: (550, b'5.1.0 Too Many IPs used', 'visio@oeccabenin.bj')
+[2026-08-26 14:14:51,206] INFO - SMTP removido do arquivo: visio@oeccabenin.bj@smtp.oeccabenin.bj:465
+[2026-08-26 14:14:51,207] WARNING - Tentativa 1/3 falhou para carlaodevorador666@gmail.com via visio@oeccabenin.bj@smtp.oeccabenin.bj:465: SENDER_REFUSED: (550, b'5.1.0 Too Many IPs used', 'visio@oeccabenin.bj')
+[2026-08-26 14:14:51,406] WARNING - Tentativa 1/3 falhou para carlaodevorador666@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465: ProxyConnectionError: Error connecting to SOCKS5 proxy 188.191.164.55:4890: timed out
+[2026-08-26 14:14:51,428] WARNING - Tentativa 1/3 falhou para carlaodevorador666@gmail.com via martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465: ProxyConnectionError: Error connecting to SOCKS5 proxy 188.191.164.55:4890: timed out
+[2026-08-26 14:14:52,031] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:14:52,214] INFO - ENVIADO: carlaodevorador666@gmail.com via marco.seri@iconecom.net@smtp.iconecom.net:465
+[2026-08-26 14:14:54,170] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: marco.seri@iconecom.net@smtp.iconecom.net:465 | IP: Proxy:77.239.106.24:1080
+[2026-08-26 14:15:01,229] WARNING - Tentativa 2/3 falhou para carlaodevorador666@gmail.com via inicial1@mediari.com.br@autodiscover.mediari.com.br:465: ProxyConnectionError: Error connecting to SOCKS5 proxy 188.191.164.55:4890: timed out
+[2026-08-26 14:15:01,449] WARNING - Tentativa 2/3 falhou para carlaodevorador666@gmail.com via blasting@tavantolgoi.mn@smtp.tavantolgoi.mn:465: ProxyConnectionError: Error connecting to SOCKS5 proxy 188.191.164.55:4890: timed out
+[2026-08-26 14:15:03,241] DEBUG - Conexao OK: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:15:05,648] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:15:06,227] WARNING - Tentativa 1/3 falhou para carlaodevorador666@gmail.com via inicial1@mediari.com.br@autodiscover.mediari.com.br:465: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:15:07,236] INFO - ENVIADO: carlaodevorador666@gmail.com via martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:15:07,813] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465 | IP: Proxy:77.239.106.24:1080
+[2026-08-26 14:15:15,931] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:15:16,075] DEBUG - Conexao OK: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:15:18,638] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:15:19,123] INFO - ENVIADO: carlaodevorador666@gmail.com via martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:15:19,437] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:15:19,536] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465 | IP: Proxy:77.239.106.24:1080
+[2026-08-26 14:15:19,896] WARNING - Tentativa 3/3 falhou para carlaodevorador666@gmail.com via inicial1@mediari.com.br@autodiscover.mediari.com.br:465: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:15:19,909] ERROR - FALHA: carlaodevorador666@gmail.com | SMTP: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 | Erro: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:15:25,894] INFO - ENVIADO: carlaodevorador666@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:15:26,483] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | IP: Proxy:77.239.106.24:1080

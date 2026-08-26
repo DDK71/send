@@ -1,0 +1,34 @@
+[2026-08-26 14:21:42,304] INFO - Template carregado: templates/default.html
+[2026-08-26 14:21:43,017] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #1)
+[2026-08-26 14:21:43,033] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #2)
+[2026-08-26 14:21:43,081] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #3)
+[2026-08-26 14:21:46,791] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:21:47,491] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:21:48,053] DEBUG - Conexao OK: marco.seri@iconecom.net@smtp.iconecom.net:465
+[2026-08-26 14:21:48,548] WARNING - SMTP REMOVIDO: marco.seri@iconecom.net@smtp.iconecom.net:465 | Sender: (550, b'5.1.0 Too Many IPs used', 'marco.seri@iconecom.net')
+[2026-08-26 14:21:48,569] INFO - SMTP removido do arquivo: marco.seri@iconecom.net@smtp.iconecom.net:465
+[2026-08-26 14:21:48,570] WARNING - Tentativa 1 falhou: SENDER_REFUSED: (550, b'5.1.0 Too Many IPs used', 'marco.seri@iconecom.net')
+[2026-08-26 14:21:48,570] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #4)
+[2026-08-26 14:21:54,075] INFO - ENVIADO: carlaodevorador666@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:21:54,213] INFO - ENVIADO: carlaodevorador666@gmail.com via inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:21:54,596] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:rst.geekproxy.net:1080
+[2026-08-26 14:21:54,742] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:rst.geekproxy.net:1080
+[2026-08-26 14:21:59,472] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #5)
+[2026-08-26 14:22:01,624] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #6)
+[2026-08-26 14:22:07,128] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:22:08,177] WARNING - Tentativa 2 falhou: TimeoutError: _ssl.c:1064: The handshake operation timed out
+[2026-08-26 14:22:08,177] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #7)
+[2026-08-26 14:22:08,526] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:22:12,478] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:22:13,079] WARNING - Tentativa 1 falhou: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:22:13,079] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #8)
+[2026-08-26 14:22:17,290] INFO - SMTP inicial4@mediari.com.br@autodiscover.mediari.com.br:465 pausado (limite de 2 envios)
+[2026-08-26 14:22:17,291] INFO - ENVIADO: carlaodevorador666@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:22:18,030] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:22:18,447] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:rst.geekproxy.net:1080
+[2026-08-26 14:22:20,996] DEBUG - Conexao OK: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:22:22,433] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:22:23,155] WARNING - Tentativa 3 falhou: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:22:23,185] ERROR - FALHA: carlaodevorador666@gmail.com | Erro: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:22:25,491] INFO - ENVIADO: carlaodevorador666@gmail.com via martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:22:26,405] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465 | Proxy:rst.geekproxy.net:1080

@@ -1,0 +1,24 @@
+[2026-08-26 14:19:08,412] INFO - Template carregado: templates/default.html
+[2026-08-26 14:19:09,614] DEBUG - Proxy: 77.239.106.24:1080 (uso #1)
+[2026-08-26 14:19:09,631] DEBUG - Proxy: 188.191.164.55:4890 (uso #1)
+[2026-08-26 14:19:09,646] DEBUG - Proxy: 77.239.106.24:1080 (uso #2)
+[2026-08-26 14:19:11,433] DEBUG - Conexao OK: marco.seri@iconecom.net@smtp.iconecom.net:465
+[2026-08-26 14:19:12,261] INFO - ENVIADO: carlaodevorador666@gmail.com via marco.seri@iconecom.net@smtp.iconecom.net:465
+[2026-08-26 14:19:12,519] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: marco.seri@iconecom.net@smtp.iconecom.net:465 | Proxy:77.239.106.24:1080
+[2026-08-26 14:19:12,587] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:19:15,709] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:19:16,578] WARNING - Tentativa 1 falhou: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:19:16,578] DEBUG - Proxy: 188.191.164.55:4890 (uso #2)
+[2026-08-26 14:19:19,109] DEBUG - Proxy: 77.239.106.24:1080 (uso #3)
+[2026-08-26 14:19:24,752] WARNING - Tentativa 1 falhou: ProxyConnectionError: Error connecting to SOCKS5 proxy 188.191.164.55:4890: timed out
+[2026-08-26 14:19:24,752] DEBUG - Proxy: 188.191.164.55:4890 (uso #3)
+[2026-08-26 14:19:25,833] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:19:31,611] WARNING - Tentativa 2 falhou: ProxyConnectionError: Error connecting to SOCKS5 proxy 188.191.164.55:4890: timed out
+[2026-08-26 14:19:31,611] DEBUG - Proxy: 77.239.106.24:1080 (uso #4)
+[2026-08-26 14:19:34,696] INFO - ENVIADO: carlaodevorador666@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:19:36,094] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:77.239.106.24:1080
+[2026-08-26 14:19:40,100] DEBUG - Proxy: 188.191.164.55:4890 (uso #4)
+[2026-08-26 14:19:41,975] DEBUG - Conexao OK: inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:19:49,609] INFO - SMTP inicial4@mediari.com.br@autodiscover.mediari.com.br:465 pausado (limite de 2 envios)
+[2026-08-26 14:19:49,610] INFO - ENVIADO: carlaodevorador666@gmail.com via inicial4@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:19:50,253] INFO - ENVIADO: carlaodevorador666@gmail.com | SMTP: inicial4@mediari.com.br@autodiscover.mediari.com.br:465 | Proxy:77.239.106.24:1080

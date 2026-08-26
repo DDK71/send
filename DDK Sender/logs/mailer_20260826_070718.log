@@ -1,0 +1,10 @@
+[2026-08-26 07:07:24,077] INFO - Template carregado: templates/default.html
+[2026-08-26 07:07:27,739] WARNING - SMTP DELETADO: technohousdjandre@gmx.net@mail.gmx.net:465 | Motivo: Credenciais inválidas: (535, b'Authentication credentials invalid')
+[2026-08-26 07:07:34,852] WARNING - Proxy blacklistado: 188.191.164.55:4890
+[2026-08-26 07:07:35,320] WARNING - Proxy blacklistado: 77.239.106.24:1080
+[2026-08-26 07:07:35,322] WARNING - Todos os proxies falharam, resetando blacklist
+[2026-08-26 07:07:35,325] WARNING - Proxy blacklistado: 77.239.106.24:1080
+[2026-08-26 07:07:35,326] WARNING - Proxy blacklistado: 77.239.106.24:1080
+[2026-08-26 07:07:38,025] WARNING - Proxy blacklistado: 188.191.164.55:4890
+[2026-08-26 07:07:38,026] WARNING - Todos os proxies falharam, resetando blacklist
+[2026-08-26 07:07:45,386] WARNING - Proxy blacklistado: 188.191.164.55:4890

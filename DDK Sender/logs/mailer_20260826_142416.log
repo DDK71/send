@@ -1,0 +1,23 @@
+[2026-08-26 14:24:19,719] INFO - Template carregado: templates/default.html
+[2026-08-26 14:24:20,064] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #1)
+[2026-08-26 14:24:20,088] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #2)
+[2026-08-26 14:24:20,139] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #3)
+[2026-08-26 14:24:23,964] WARNING - Tentativa 1 falhou: SSLEOFError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.
+[2026-08-26 14:24:23,964] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #4)
+[2026-08-26 14:24:25,842] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:24:29,414] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:24:29,987] WARNING - Tentativa 1 falhou: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:24:29,988] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #5)
+[2026-08-26 14:24:30,524] DEBUG - Conexao OK: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:24:33,965] INFO - ENVIADO: alves.anabeatriz2026@gmail.com via martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:24:34,534] INFO - ENVIADO: alves.anabeatriz2026@gmail.com | SMTP: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465 | Proxy:rst.geekproxy.net:1080
+[2026-08-26 14:24:37,869] DEBUG - Conexao OK: inicial1@mediari.com.br@autodiscover.mediari.com.br:465
+[2026-08-26 14:24:40,717] WARNING - RATELIMIT: inicial1@mediari.com.br@autodiscover.mediari.com.br:465 pausado por 300s
+[2026-08-26 14:24:40,826] DEBUG - Conexao OK: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:24:41,083] WARNING - Tentativa 2 falhou: RATELIMIT: (451, b'4.7.1 Ratelimit "mailcow" exceeded')
+[2026-08-26 14:24:41,084] DEBUG - Proxy: rst.geekproxy.net:1080 (uso #6)
+[2026-08-26 14:24:44,836] INFO - SMTP martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465 pausado (limite de 2 envios)
+[2026-08-26 14:24:44,836] INFO - ENVIADO: valmir.santos67101@gmail.com via martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465
+[2026-08-26 14:24:45,669] INFO - ENVIADO: valmir.santos67101@gmail.com | SMTP: martyna.jakubiak@dzielo.pl@smtp.dzielo.pl:465 | Proxy:rst.geekproxy.net:1080
+[2026-08-26 14:24:59,443] WARNING - Tentativa 3 falhou: TimeoutError: _ssl.c:1064: The handshake operation timed out
+[2026-08-26 14:24:59,458] ERROR - FALHA: comsstrubem@gmail.com | Erro: TimeoutError: _ssl.c:1064: The handshake operation timed out
