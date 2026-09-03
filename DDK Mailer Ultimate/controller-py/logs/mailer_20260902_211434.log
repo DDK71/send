@@ -1,0 +1,15 @@
+[2026-09-02 21:14:34,195] DEBUG - [GO-STDERR] [GO-ENGINE] Iniciado com sucesso
+[2026-09-02 21:15:46,687] INFO - Carregadas 10 proxies no ProxyManager
+[2026-09-02 21:15:46,688] INFO - Carregadas 563 contas SMTP no SMTPManager
+[2026-09-02 21:15:46,688] INFO - Template carregado: templates/default.html
+[2026-09-02 21:16:11,341] INFO - ENVIADO: alves.anabeatriz2026@gmail.com | josue@legalads.com.br@mail.legalads.com.br:465 | 24138ms
+[2026-09-02 21:16:25,935] INFO - ENVIADO: valmir.santos67101@gmail.com | oir@tias-bud.com@smtp.tias-bud.com:465 | 14592ms
+[2026-09-02 21:16:32,505] WARNING - Retry 2/3 em 2s...
+[2026-09-02 21:16:56,319] WARNING - RATELIMIT: zhosseinzade@aut.ac.ir@smtp.aut.ac.ir:465 pausado 1800s (código: 4.7.1)
+[2026-09-02 21:16:56,319] WARNING - Retry 3/3 em 4s...
+[2026-09-02 21:17:12,501] INFO - ENVIADO: comsstrubem@gmail.com | herciliolima@uol.com.br@smtp.uol.com.br:465 | 12177ms
+[2026-09-02 21:17:47,499] INFO - Carregadas 10 proxies no ProxyManager
+[2026-09-02 21:17:47,499] INFO - Carregadas 1 contas SMTP no SMTPManager
+[2026-09-02 21:17:47,499] INFO - Template carregado: templates/default.html
+[2026-09-02 21:18:03,279] INFO - ENVIADO: comsstrubem@gmail.com | herciliolima@uol.com.br@smtp.uol.com.br:465 | 6454ms
+[2026-09-02 21:18:15,181] INFO - ENVIADO: valmir.santos67101@gmail.com | herciliolima@uol.com.br@smtp.uol.com.br:465 | 11901ms

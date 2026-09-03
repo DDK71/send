@@ -1,0 +1,3 @@
+
+# Sessão: 02/09/2026 21:12:44
+smtp.uol.com.br|465|scambeirorj@uol.com.br|svcambeiro2020 # Auth: AUTH falhou: 535 "5.7.8 Error: authentication failed: " [21:12:41]

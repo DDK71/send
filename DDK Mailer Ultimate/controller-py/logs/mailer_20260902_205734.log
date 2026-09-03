@@ -1,0 +1,17 @@
+[2026-09-02 20:57:35,037] DEBUG - [GO-STDERR] [GO-ENGINE] Iniciado com sucesso
+[2026-09-02 20:58:04,945] INFO - Carregadas 10 proxies no ProxyManager
+[2026-09-02 20:58:04,945] INFO - Carregadas 1 contas SMTP no SMTPManager
+[2026-09-02 20:58:04,945] INFO - Template carregado: templates/default.html
+[2026-09-02 20:58:17,798] INFO - ENVIADO: carlaodevorador666@gmail.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 12049ms
+[2026-09-02 20:58:22,821] INFO - ENVIADO: carlaodevorador666@gmail.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 5021ms
+[2026-09-02 20:58:37,557] INFO - ENVIADO: carlaodevorador666@gmail.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 14735ms
+[2026-09-02 20:58:51,042] INFO - ENVIADO: carlaodevorador666@gmail.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 13483ms
+[2026-09-02 20:58:59,888] INFO - ENVIADO: carlaodevorador666@gmail.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 8844ms
+[2026-09-02 21:11:33,282] INFO - Carregadas 10 proxies no ProxyManager
+[2026-09-02 21:11:33,282] INFO - Carregadas 1 contas SMTP no SMTPManager
+[2026-09-02 21:11:33,282] INFO - Template carregado: templates/default.html
+[2026-09-02 21:11:50,047] INFO - ENVIADO: valmir.santos67101@outlook.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 16015ms
+[2026-09-02 21:12:07,724] INFO - ENVIADO: valmir.santos67101@outlook.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 17676ms
+[2026-09-02 21:12:19,414] INFO - ENVIADO: valmir.santos67101@outlook.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 11689ms
+[2026-09-02 21:12:29,133] INFO - ENVIADO: valmir.santos67101@outlook.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 9718ms
+[2026-09-02 21:12:41,780] WARNING - SMTP REMOVIDO: smtp.uol.com.br|465|scambeirorj@uol.com.br|sv**********20 | Auth: AUTH falhou: 535 "5.7.8 Error: authentication failed: "

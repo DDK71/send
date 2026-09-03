@@ -1,0 +1,2 @@
+smtp.oricom.ca|465|martin969@oricom.ca|mt39321
+smtp.oricom.ca|465|alainbertrand@oricom.ca|momus

@@ -1,0 +1,1 @@
+smtp.uol.com.br|465|herciliolima@uol.com.br|Lima@1959

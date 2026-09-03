@@ -1,0 +1,8 @@
+﻿{Comunicado|Aviso|Notificacao} {importante|oficial} #{random}
+{Atualizacao|Informacao} {do seu processo|do seu cadastro} #{random}
+{Documento|Arquivo} {disponivel|liberado} para consulta #{random}
+{Seu processo|Sua solicitacao} #{random}
+{Comunicado|Aviso} #{random}
+{Notificacao|Comunicado} {de processo|de atualizacao} #{random}
+{Consulta|Acesso} {disponivel|liberado} #{random}
+{Informe|Aviso} {importante|oficial} #{random}

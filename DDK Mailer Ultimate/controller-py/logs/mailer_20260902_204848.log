@@ -1,0 +1,7 @@
+[2026-09-02 20:48:48,529] DEBUG - [GO-STDERR] [GO-ENGINE] Iniciado com sucesso
+[2026-09-02 20:48:58,368] INFO - Template carregado: templates/default.html
+[2026-09-02 20:49:22,533] INFO - ENVIADO: carlaodevorador666@gmail.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 22951ms
+[2026-09-02 20:49:34,538] INFO - ENVIADO: carlaodevorador666@gmail.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 12003ms
+[2026-09-02 20:49:49,102] INFO - ENVIADO: carlaodevorador666@gmail.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 14562ms
+[2026-09-02 20:49:59,292] INFO - ENVIADO: carlaodevorador666@gmail.com | scambeirorj@uol.com.br@smtp.uol.com.br:465 | 10189ms
+[2026-09-02 20:50:09,380] WARNING - RATELIMIT: scambeirorj@uol.com.br@smtp.uol.com.br:465 pausado 1800s (código: 4.7.1)
