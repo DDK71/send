@@ -1,3 +1,0 @@
-dnspython==2.4.2
-PySocks==1.7.1
-rich==13.7.0
